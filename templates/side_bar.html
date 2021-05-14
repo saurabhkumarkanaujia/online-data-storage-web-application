@@ -1,0 +1,68 @@
+{% load static %}
+<!-- The sidebar -->
+
+  {% if user.is_superuser %}
+  <div class="sidebar">
+    <center>
+      <form action="{% url 'upload_f' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">{{ message }}</div>
+        {% endfor %}
+          <div class="form-group">
+            <input type="file" name="uploaded_file1" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg">Upload</button>
+          </div>
+      </form>
+    </center> 
+  
+    <a class="active" href="{% url 'my_drive' %}">Home</a>
+    <a href="{% url 'all_files' %}">All Files</a>
+    <a href="{% url 'photos' %}">Photos</a>
+    <a href="{% url 'videos' %}">Videos</a>
+    <a href="{% url 'documents' %}">Documents</a>
+
+    <div class="dropdown">
+          <a class="dropbtn">My Profile<i class="fa fa-user"></i></a>
+          <div class="dropdown-content">
+              <a href="{% url 'dashboard' %}">My Dashboard</a>
+              <a href="{% url 'logout' %}">Logout</a>
+          </div>
+      </div>
+  </div>
+
+  {% else %}
+  
+  <div class="sidebar font_small">
+      <center>
+        <form action="{% url 'upload_f' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">{{ message }}</div>
+          {% endfor %}
+            <div class="form-group">
+              <input type="file" name="uploaded_file1" class="form-control">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success btn-lg">Upload</button>
+            </div>
+        </form>
+      </center> 
+    
+      <a class="active" href="{% url 'my_drive' %}">Home</a>
+      <a href="{% url 'all_files' %}">All Files</a>
+      <a href="{% url 'photos' %}">Photos</a>
+      <a href="{% url 'videos' %}">Videos</a>
+      <a href="{% url 'documents' %}">Documents</a>
+
+      <div class="dropdown">
+            <a class="dropbtn">My Profile<i class="fa fa-user"></i></a>
+            <div class="dropdown-content">
+                <a href="#">My Dashboard</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+  {% endif %}

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Record</title>
+{% include 'web-css.html' %}
+<style type="text/css">
+	
+</style>
+</head> 
+<body>
+		
+		
+	
+{% include 'soft-menu.html' %}
+
+<div class="container-fluid">
+
+	<div class="signup-form">
+{% for message in messages %}
+
+<div class="alert alert-{{message.tags}} alert-error">{{ message }}</div>
+{% endfor %}
+    <form action="{% url 'update_user' %}" method="POST">
+		{% for message in messages %}
+		<h2>Sign Up</h2>
+		<p>Please fill in this form to create an account!</p>
+		<hr>
+			{{ message }}
+		{% endfor %}
+		{% csrf_token %}
+		{% for data in reg_details %}
+        <div class="form-group">
+			<div class="row">
+				<div class="col-md-6">
+					
+					<input type="text" class="form-control" name="first_name" value="{{ data.first_name }}" required="required">
+					
+				</div>
+				<div class="col-md-6"><input type="text" class="form-control" name="last_name" value="{{ data.last_name }}" required="required"></div>
+			</div>        	
+		</div>
+		<div class="form-group">
+				<input type="text" class="form-control" name="username" value="{{data.username}}" required="required" readonly>
+			</div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" value="{{data.email}}" required="required">
+		</div>
+		
+	      
+        <div class="form-group">
+			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<input type="hidden" name="user_id" value="{{data.id}}">
+		{% endfor %}
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg">Update</button>
+		</div>
+		
+    </form>
+	
+</div>
+</div>
+
+
+
+{% include 'footer.html' %}
+
+{% include 'web-js.html' %}
+</body>
+</html>                                                        

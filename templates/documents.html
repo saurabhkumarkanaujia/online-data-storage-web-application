@@ -1,0 +1,47 @@
+{% load static %}
+<br><br><br><br>
+<h1>Documents</h1>
+
+<BR>
+<hr>
+<div class="row">
+  {% for op in file_data %}
+  {% if request.user.username == op.user_name %}
+
+    {% if op.file_type == "application/pdf" %}
+    <div class="col-md-4">
+          <center>
+            <a href="">
+            <div class="card card_dim">
+              <img class="img-responsive img_wid_100" src="{% static 'images/pdf.png' %}" alt="header image" >
+            </div>
+            <div class="card-body">
+              <p class="card-text overflow_hide">{{ op.file_name }}</p>
+            </div>
+          </a>
+          </center>
+          <br><br><br><br>
+        </div>
+
+    {% elif op.file_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" %}
+    <div class="col-md-4">
+      <center>
+        <a href="">
+          <div class="card card_dim">
+            <img class="img-responsive card_img" src="../media/{{op.uploaded_file}}" alt="header image" >
+          </div>
+            <div class="card-body">
+              <p class="card-text overflow_hide">{{ op.file_name }}</p>
+            </div>
+      </a>
+      </center>
+      <br><br><br><br>
+    </div>
+      {% endif %}
+    
+    {% endif %}
+  {% endfor %}
+  
+</div>
+
+

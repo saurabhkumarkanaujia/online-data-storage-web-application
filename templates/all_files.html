@@ -1,0 +1,48 @@
+{% load static %}
+<br><br><br><br><br>
+<hr>
+<div class="row">  
+  {% for op in file_data %}
+  {% if request.user.username == op.user_name %}
+      <div class="col-md-4">
+        <center>
+          <a href="../media/{{op.uploaded_file}}" download>
+          <div class="card card_dim">
+            {% if op.file_type == "image/jpeg" or op.file_type == "image/png" %}
+              <img class="img-responsive card_img" src="../media/{{op.uploaded_file}}" alt="img.jpg">
+          
+            {% elif op.file_type == "application/pdf" %}
+            <img class="img-responsive card_img" src="{% static 'images/pdf.png' %}" alt="header image" >
+              
+            {% elif op.file_type == "audio/mpeg" %}
+            <img class="img-responsive mp3_img" src="{% static 'images/mp3.png' %}" alt="header image" >
+            <audio class="audio_width" controls>
+              <source src="../media/{{op.uploaded_file}}" type="audio/mp3">
+              <source src="../media/{{op.uploaded_file}}" type="audio/mpeg">
+              Your browser does not support the audio tag.
+            </audio>
+          
+            {% elif op.file_type == "video/mp4" or op.file_type == "video/webm" %}
+              <video class="img-responsive card_img" controls>
+                <source src="../media/{{op.uploaded_file}}" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+              
+            {% elif op.file_type == "application/zip" %}
+              <img class="img-responsive card_img" src="{% static 'images/zip.png' %}" alt="header image" >
+            {% elif op.file_type == "text/html" %}
+              <img class="img-responsive card_img" src="{% static 'images/html.png' %}" alt="header image" >
+            {% elif op.file_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" %}
+              <img class="img-responsive card_img" src="{% static 'images/doc.png' %}" alt="header image" >
+            {% endif %}
+            <div class="card-body">
+              <p class="card-text overflow_hide">{{ op.file_name }}</p>
+            </div>
+          </div>
+        </a>
+        </center>
+        <br><br><br><br>
+      </div>
+      {% endif %}
+    {% endfor %}
+</div>

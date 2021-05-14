@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SK Drive</title>
+{% include 'web-css.html' %}
+<style type="text/css">
+	body{
+		font-family: 'Varela Round', sans-serif;
+	}
+    .box{
+        position:relative;
+    }
+    
+    .nav_top{
+        position: absolute;
+        color: #fff;
+        text-align: center;
+        left: 0;
+        right: 0;
+        top: 3%;
+        letter-spacing: 3px;        
+    }
+	.img_wid_100{
+        width: 100%;
+        height: auto;
+
+    }
+    .nav_no_color{
+        background-color: transparent;
+        border-bottom: none;
+    }
+    .ind_register{
+        position: absolute;
+        color: white;
+        text-align: center;
+        top: 90%;
+        left: 0;
+        right: 0;
+        letter-spacing: 3px;
+    }
+    .btn_transp{
+        background: border-box
+    }
+    .back_white{
+        background-color: white;
+    }
+    .ind_card_img{
+        height: 160px;
+        width: 200px;
+    }
+    .p_d{
+        padding: 50px;
+    }
+    .card_fit{
+        width: fit-content;
+    }
+</style>
+</head> 
+<body>
+    <div class="box">
+        <img class="img-responsive img_wid_100" src="{% static 'images/ind.jpg' %}" alt="header image" >
+        <div class="nav_top">
+            {% include 'menu.html' %}
+        </div>
+        <div class="ind_register">
+            <a href="#" class="btn btn-success btn_transp">Register Now</a>
+        </div>
+    </div>
+
+    <div class="jumbotron j_margin text-center back_white">
+        <h1 class="display-4">Get the Most Out of Us</h1>
+        <div class="container-fluid">
+            <div class="row p_d ">
+                    <div class="col-md-4">
+                        <div class="card card_fit">
+                            <div class="card-header">
+                                <img class=" img img-responsive ind_card_img" src="{% static 'images/file1.jpeg' %}" alt="header image" >
+                            </div>
+                            <div class="card-body">
+                                <h3>Store any File</h3>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                    <div class="card card_fit">
+                        <div class="card-header">
+                            <img class=" img img-responsive ind_card_img" src="{% static 'images/share_file.jpg' %}" alt="header image" >
+                        </div>
+                        <div class="card-body">
+                            <h3>Store any File</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card_fit">
+                        <div class="card-header">
+                            <img class=" img img-responsive ind_card_img" src="{% static 'images/secure_file.jpg' %}" alt="header image" >
+                        </div>
+                        <div class="card-body">
+                            <h3>Store any File</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <div class="jumbotron text-center bg-primary">
+        <img class="img_jumbo" src="{% static 'images/secure_file.jpg' %}">
+        <h1 class="display-4 pd_inherit">Get the Most Out of Us</h1>
+        <p class="lead">One Stop Solution for all your Storage problems.</p>
+        <a class="btn btn-lg btn-success" href="#">Sign Up for Free</a>
+        
+    </div>
+
+
+      
+
+{% include 'footer.html' %}
+
+{% include 'web-js.html' %}
+</body>
+</html>                                                        

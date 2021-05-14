@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SK Drive</title>
+{% include 'web-css.html' %}
+<style type="text/css">
+  
+
+</style>
+</head> 
+<body>
+  
+{% include 'log_menu.html' %}
+
+{% include 'side_bar.html' %}
+
+
+
+<!-- Page content -->
+{% if data == 'home' %}
+  <div class="content">
+    {% include 'home.html' %}
+    {% include 'footer.html' %}
+  </div>
+
+{% elif data == 'photos' %}
+  <div class="content">
+    {% include 'photos.html' %}
+    {% include 'footer.html' %}
+  </div>
+
+{% elif data == 'all_files' %}
+  <div class="content">
+  {% include 'all_files.html' %}
+  {% include 'footer.html' %}
+  </div>
+
+
+{% elif data == 'videos' %}
+<div class="content">
+  
+  {% include 'videos.html' %}
+  {% include 'footer.html' %}
+</div>
+
+{% elif data == 'documents' %}
+<div class="content">
+  {% include 'documents.html' %}
+  {% include 'footer.html' %}
+</div>
+
+{% elif data == 'upgrade_storage' %}
+<div class="content">
+  {% include 'photos.html' %}
+  {% include 'footer.html' %}
+</div>
+
+{% elif data == 'dashboard' %}
+<div class="content">
+  {% include 'dashboard.html' %}
+  {% include 'footer.html' %}
+</div>
+
+{% endif %}
+
+{% include 'web-js.html' %}
+</body>
+</html>
